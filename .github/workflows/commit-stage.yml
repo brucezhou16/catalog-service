@@ -28,25 +28,6 @@ jobs:
           path: "${{ github.workspace }}"
           fail-build: false
           severity-cutoff: high
-      - name: Debug SARIF file
-        run: |
-          echo "Checking SARIF file..."
-
-          if [ ! -f results.sarif ]; then
-          echo "ERROR: SARIF file does not exist"
-          exit 1
-          fi
-
-          echo "File size:"
-          wc -c results.sarif
-
-          echo "File contents:"
-          cat results.sarif
-
-          echo "Validating JSON..."
-          python -m json.tool results.sarif > /dev/null
-
-          echo "SARIF JSON is valid"
       - name: Upload vulnerability report
         uses: github/codeql-action/upload-sarif@v3
         if: success() || failure()
