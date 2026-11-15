@@ -21,15 +21,8 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-      - name: Install Grype
-        id: install-grype
-        uses: anchore/scan-action/download-grype@v6
-      - name: Update Grype database
-        run: |
-          ${{ steps.install-grype.outputs.cmd }} db update
-          ${{ steps.install-grype.outputs.cmd }} db status
       - name: Code vulnerability scanning
-        uses: anchore/scan-action@v3
+        uses: anchore/scan-action@v7.4.2
         id: scan
         with:
           path: "${{ github.workspace }}"
