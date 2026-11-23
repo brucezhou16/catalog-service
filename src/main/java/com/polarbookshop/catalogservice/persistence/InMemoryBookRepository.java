@@ -5,12 +5,12 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 import com.polarbookshop.catalogservice.domain.Book;
-import com.polarbookshop.catalogservice.domain.BookRepository;
+import com.polarbookshop.catalogservice.domain.BookRepository2;
 
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryBookRepository implements BookRepository {
+public class InMemoryBookRepository implements BookRepository2 {
 
 	private static final Map<String, Book> books = new ConcurrentHashMap<>();
 
